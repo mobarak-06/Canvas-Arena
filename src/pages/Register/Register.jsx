@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const {createUser, updateUserProfile} = useAuth()
   const {
     register,
     handleSubmit,
@@ -9,8 +12,28 @@ const Register = () => {
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data)
     
+ const {userName, photo, email, password} = data;
+
+    // crate user 
+    createUser(email, password, userName, photo)
+    .then(result => {
+      console.log(result.user);
+      updateUserProfile(userName, photo)
+      .then(() => {
+        console.log('updated profile');
+        toast.success('Successfully Sign Up!');
+      })
+      .catch(error => {
+        console.error(error);
+        
+      })
+
+    })
+    .catch(error => {
+      console.error(error);
+      
+    })
   }
 
   return (
@@ -265,10 +288,10 @@ const Register = () => {
               <input
                 type="text"
                 id="username"
-                name="username"
-                {...register("username")}
+                {...register("userName", { required: true })}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
+               {errors.userName && <span className="text-red-500">This field is required</span>}
             </div>
             <div>
               <label
@@ -280,7 +303,6 @@ const Register = () => {
               <input
                 type="text"
                 id="photo"
-                name="photo"
                 {...register("photo")}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
@@ -295,10 +317,10 @@ const Register = () => {
               <input
                 type="text"
                 id="email"
-                name="email"
-                {...register("email")}
+                {...register("email", { required: true })}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
+              {errors.email && <span className="text-red-500">This field is required</span>}
             </div>
             <div>
               <label
@@ -311,9 +333,10 @@ const Register = () => {
                 type="password"
                 id="password"
                 name="password"
-                {...register("password")}
+                {...register("password", { required: true })}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
+              {errors.password && <span className="text-red-500">This field is required</span>}
             </div>
 
             <div>
