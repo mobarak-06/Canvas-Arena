@@ -1,16 +1,26 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
+  const { signIn } = useAuth();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const { email, password } = data;
+
+    // sign in user
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <main className="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-200 text-black">
@@ -21,23 +31,28 @@ const Login = () => {
             <input
               type="email"
               placeholder="Email"
-              {...register("email")}
+              {...register("email", { required: true })}
               className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
             />
           </div>
-
+          {errors.email && (
+              <span className="text-red-500">This field is required</span>
+            )}
           <div className="w-full transform border-gray-400 border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mb-5">
             <input
               type="password"
               placeholder="Password"
-              {...register("password")}
+              {...register("password", { required: true })}
               className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
             />
           </div>
+          {errors.password && (
+              <span className="text-red-500">This field is required</span>
+            )}
           <div className="flex items-center justify-center">
-          <button className="transform rounded-md  bg-indigo-600 py-2 font-bold duration-300  text-white hover:bg-indigo-400 p-4 w-full btn">
-            LOG IN
-          </button>
+            <button className="transform rounded-md  bg-indigo-600 py-2 font-bold duration-300  text-white hover:bg-indigo-400 p-4 w-full btn">
+              LOG IN
+            </button>
           </div>
         </form>
         <div className="flex justify-between">
