@@ -1,12 +1,95 @@
-
+import { useEffect, useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyArtCraftList = () => {
-    return (
-        <div>
-            <h2>my art and craft section</h2>
-            <div className="bg-[url('https://i.ibb.co/LkcfQN3/8870210.png')] hero min-h-screen"></div>
+  const { user } = useAuth();
+  const [loadedUser, setLoadedUser] = useState([]);
+  const [deleted, setDeleted] = useState(false);
+  console.log(user?.email);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/myCraftItems/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoadedUser(data);
+      });
+  }, [user, deleted]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Item has been deleted.",
+                icon: "success",
+              });
+              setDeleted(!deleted);
+            }
+          });
+      }
+    });
+  };
+  return (
+    <div className="grid grid-cols-2 gap-10 mx-24 mt-20">
+      {loadedUser.map((item) => (
+        <div key={item._id}>
+          <div className="card card-side bg-base-100 shadow-xl relative">
+            <figure>
+              <img className="w-96 h-72" src={item.photo} alt="Movie" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{item.itemName}</h2>
+              <p>
+                <span className="font-medium">Price:</span> {item.price}
+              </p>
+              <p>
+                <span className="font-medium">Rating:</span> {item.rating}
+              </p>
+              <p>
+                <span className="font-medium">Customization:</span>{" "}
+                {item.customization}
+              </p>
+              <p className="absolute top-0 left-2 font-bold bg-green-500 text-white p-1 rounded-md">
+                {item.stockStatus}
+              </p>
+
+              <p>
+                <span className="font-medium">Description: </span>
+                {item.shortDescription.slice(0, 50)}...
+              </p>
+              <div className="card-actions justify-between">
+                <Link className="btn btn-success text-white">Update</Link>
+                <Link
+                  onClick={() => handleDelete(item._id)}
+                  className="btn btn-error text-white"
+                >
+                  Delete
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default MyArtCraftList;
