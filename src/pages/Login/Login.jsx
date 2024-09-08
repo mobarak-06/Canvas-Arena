@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { signIn } = useAuth();
+  const { signIn, signInWithGoogle, signInWithGithub } = useAuth();
   const {
     register,
     handleSubmit,
@@ -22,6 +22,30 @@ const Login = () => {
         console.error(error);
       });
   };
+
+  // social login
+
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+    .then(result => {
+      console.log(result.user);
+    })
+    .catch(error => {
+      console.error(error.message);
+      
+    })
+  }
+
+  const handleSignInWithGithub = () => {
+    signInWithGithub()
+    .then(result => {
+      console.log(result.user);
+    })
+    .catch(error => {
+      console.error(error.message);
+      
+    })
+  }
   return (
     <main className="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-200 text-black">
       <section className="flex w-[30rem] flex-col space-y-10">
@@ -42,7 +66,7 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
-              {...register("password", { required: true })}
+              {...register("password", { required: true }, { pattern: /^[A-Za-z]+$/i })}
               className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
             />
           </div>
@@ -70,8 +94,10 @@ const Login = () => {
             </Link>
           </p>
         </div>
+        <h2 className="divider text-gray-600">Or Continue With</h2>
         <div className="btn-wrapper text-center flex justify-between">
           <button
+          onClick={handleSignInWithGithub}
             className="text-black bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150 btn w-1/2"
             type="button"
           >
@@ -83,6 +109,7 @@ const Login = () => {
             Github{" "}
           </button>
           <button
+          onClick={handleSignInWithGoogle}
             className="text-black bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150 btn w-1/2 "
             type="button"
           >

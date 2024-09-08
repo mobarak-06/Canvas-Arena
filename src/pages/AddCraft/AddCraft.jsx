@@ -1,13 +1,36 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const AddCraft = () => {
+  const {user} = useAuth();
   const {
     register,
     handleSubmit,
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const {itemName, subcategoryName, shortDescription, price, rating, processingTime, customization, stockStatus, photo} = data;
+    const name = user?.displayName || {};
+    const email = user?.email || {};
+
+    const newUser = {name, email, itemName, subcategoryName, shortDescription, price, rating, processingTime, customization, stockStatus, photo};
+    console.log(newUser);
+
+    fetch('http://localhost:5000/addCraftItem', {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.insertedId) {
+        toast.success('Item Added SuccessFully !')
+      }
+    })
   };
 
   return (
@@ -120,7 +143,7 @@ const AddCraft = () => {
                 {...register("stockStatus")}
                 className="select select-bordered w-full "
               >
-                <option disabled selected>
+                <option disabled >
                   Stock Status
                 </option>
                 <option>In Stock</option>

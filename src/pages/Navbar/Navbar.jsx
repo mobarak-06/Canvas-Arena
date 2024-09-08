@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import userPic from "../../assets/da7ed7b0-5f66-4f97-a610-51100d3b9fd2.jpg"
 
 const Navbar = () => {
   const { logOut, user } = useAuth();
@@ -87,10 +88,10 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl Libre-Baskerville">
+          <Link to="/" className="btn btn-ghost text-2xl Libre-Baskerville">
             <span className="text-sky-400">Canvas</span>{" "}
             <span className="text-pink-400">Arena</span>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -105,8 +106,8 @@ const Navbar = () => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    alt = ""
+                    src={ user?.photoUrl || userPic}
                   />
                 </div>
               </div>
@@ -117,9 +118,12 @@ const Navbar = () => {
                 <li>
                   <a><span className="font-bold">Name:</span><span className=" font-semibold">{user?.displayName}</span> </a>
                 </li>
-                
                 <li>
-                  <a onClick={handleSignOut}>Logout</a>
+                  <a><span className="font-bold">Email:</span><span className=" font-semibold">{user?.email}</span> </a>
+                </li>
+                
+                <li className="flex justify-center items-center">
+                  <a onClick={handleSignOut} className="text-red-500">Logout</a>
                 </li>
               </ul>
             </div>

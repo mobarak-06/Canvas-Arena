@@ -1,127 +1,16 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Typewriter } from "react-simple-typewriter";
+import CraftItems from "../../components/CraftItems/CraftItems";
+import Slider from "../../components/Slider/Slider";
+
 
 const Home = () => {
   return (
     <div>
       {/* slider */}
+      <Slider/>
+
+      {/* Craft Items Section */}
       <div>
-        <Swiper
-          pagination={true}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div
-              className="hero min-h-screen"
-              style={{
-                backgroundImage:
-                  "url(https://i.ibb.co.com/d64TfG7/monochromatic-still-life-composition-with-tableware.jpg)",
-              }}
-            >
-              <h1 className="Libre-Baskerville text-6xl font-medium text-white ml-72 mb-40">
-                ART & HANDCRAFT
-              </h1>
-              <span className=" text-5xl ml-72 Tangerine">
-                <h1
-                  style={{
-                    paddingTop: "5rem",
-                    margin: "auto 0",
-                    fontWeight: "normal",
-                  }}
-                >
-                  <span style={{ color: "white", fontWeight: "bold" }}>
-                    {/* Style will be inherited from the parent element */}
-                    <Typewriter
-                      words={["Intro To Creating Creative Potty And Clay"]}
-                      loop={10}
-                      cursor
-                      cursorStyle="|"
-                      typeSpeed={70}
-                      deleteSpeed={50}
-                      delaySpeed={1000}
-                    />
-                  </span>
-                </h1>
-              </span>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="hero min-h-screen"
-              style={{
-                backgroundImage:
-                  "url(https://i.ibb.co.com/Hdfczw1/ancient-pottery-vessels-collection.jpg)",
-              }}
-            >
-              {/* POTTERY & CLAY */}
-              <h2 className="Libre-Baskerville text-3xl font-medium text-white mb-36">
-                WE LOVE{" "}
-              </h2>
-              <span className="Libre-Baskerville text-6xl">
-                <h1
-                  style={{
-                    paddingTop: "5rem",
-                    margin: "auto 0",
-                    fontWeight: "normal",
-                  }}
-                >
-                  <span style={{ color: "white", fontWeight: "bold" }}>
-                    {/* Style will be inherited from the parent element */}
-                    <Typewriter
-                      words={["POTTERY & CLAY"]}
-                      loop={100}
-                      cursor
-                      cursorStyle="|"
-                      typeSpeed={70}
-                      deleteSpeed={50}
-                      delaySpeed={1000}
-                    />
-                  </span>
-                </h1>
-              </span>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="hero min-h-screen"
-              style={{
-                backgroundImage:
-                  "url(https://i.ibb.co.com/dcC805q/terracotta-vase-with-indigenous-pattern-1.jpg)",
-              }}
-            >
-              <h2 className="Libre-Baskerville text-3xl font-medium text-sky-400 mb-20">THE ART OF CLAY</h2>
-              <span className=" Libre-Baskerville text-5xl">
-              <h1
-                style={{
-                  paddingTop: "5rem",
-                  margin: "auto 0",
-                  fontWeight: "normal",
-                }}
-              >
-                
-                <span style={{ color: "#FF5733", fontWeight: "bold" }}>
-                  {/* Style will be inherited from the parent element */}
-                  <Typewriter
-                    words={["CREATIVE POTTERY WORKSHOP"]}
-                    loop={5}
-                    cursor
-                    cursorStyle="_"
-                    typeSpeed={70}
-                    deleteSpeed={50}
-                    delaySpeed={1000}
-                  />
-                </span>
-              </h1>
-              </span>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+        <CraftItems/>
       </div>
     </div>
   );
