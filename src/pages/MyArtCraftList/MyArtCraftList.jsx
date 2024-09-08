@@ -76,7 +76,7 @@ const MyArtCraftList = () => {
                 {item.shortDescription.slice(0, 50)}...
               </p>
               <div className="card-actions justify-between">
-                <Link className="btn btn-success text-white">Update</Link>
+                <Link to={`/update/${item._id}`} className="btn btn-success text-white">Update</Link>
                 <Link
                   onClick={() => handleDelete(item._id)}
                   className="btn btn-error text-white"
