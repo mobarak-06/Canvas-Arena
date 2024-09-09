@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 
 const MyArtCraftList = () => {
   const { user } = useAuth();
+  console.log(user);
   const [loadedUser, setLoadedUser] = useState([]);
   const [deleted, setDeleted] = useState(false);
-  console.log(user?.email);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myCraftItems/${user?.email}`)
@@ -76,7 +76,12 @@ const MyArtCraftList = () => {
                 {item.shortDescription.slice(0, 50)}...
               </p>
               <div className="card-actions justify-between">
-                <Link to={`/update/${item._id}`} className="btn btn-success text-white">Update</Link>
+                <Link
+                  to={`/update/${item._id}`}
+                  className="btn btn-success text-white"
+                >
+                  Update
+                </Link>
                 <Link
                   onClick={() => handleDelete(item._id)}
                   className="btn btn-error text-white"

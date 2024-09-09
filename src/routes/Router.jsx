@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ItemDetails from "../components/ItemDetails/ItemDetails";
 import Update from "../pages/MyArtCraftList/Update";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -35,15 +36,21 @@ export const router = createBrowserRouter([
         },
         {
           path: "/addCraft",
-          element: <AddCraft/>
+          element: <PrivateRouter>
+            <AddCraft/>
+          </PrivateRouter>
         },
         {
           path: "/myArt&Craft",
-          element: <MyArtCraftList/>
+          element: <PrivateRouter>
+            <MyArtCraftList/>
+          </PrivateRouter>
         },
         {
           path: "/itemDetails/:id",
-          element: <ItemDetails/>,
+          element: <PrivateRouter>
+            <ItemDetails/>
+          </PrivateRouter>,
           loader: ({params}) => fetch(`http://localhost:5000/allCraftItems/${params.id}`)
         },
         {

@@ -152,7 +152,7 @@ const Update = () => {
               <select
                 {...register("stockStatus")}
                 className="select select-bordered w-full "
-                defaultChecked={data.stockStatus}
+                defaultValue={data.stockStatus}
               >
                 <option disabled >
                   Stock Status
