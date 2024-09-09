@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const { signIn, signInWithGoogle, signInWithGithub } = useAuth();
   const {
     register,
@@ -17,6 +20,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/")
       })
       .catch((error) => {
         console.error(error);
@@ -29,6 +33,7 @@ const Login = () => {
     signInWithGoogle()
     .then(result => {
       console.log(result.user);
+      navigate(location?.state ? location.state : "/")
     })
     .catch(error => {
       console.error(error.message);
@@ -40,6 +45,7 @@ const Login = () => {
     signInWithGithub()
     .then(result => {
       console.log(result.user);
+      navigate(location?.state ? location.state : "/")
     })
     .catch(error => {
       console.error(error.message);

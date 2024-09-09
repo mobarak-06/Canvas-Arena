@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
+  const navigate = useNavigate();
   const {createUser, updateUserProfile} = useAuth()
   const {
     register,
@@ -23,6 +24,7 @@ const Register = () => {
       .then(() => {
         console.log('updated profile');
         toast.success('Successfully Sign Up!');
+        navigate("/");
       })
       .catch(error => {
         console.error(error);
