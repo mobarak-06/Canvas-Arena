@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { IoMdEye ,IoMdEyeOff } from "react-icons/io";
 
 const Register = () => {
+  const [showEye, setShowEye] = useState(false);
+  const [registerError, setRegisterError] = useState('');
   const navigate = useNavigate();
   const {createUser, updateUserProfile} = useAuth()
   const {
@@ -15,6 +19,17 @@ const Register = () => {
   const onSubmit = (data) => {
     
  const {userName, photo, email, password} = data;
+
+//  validation 
+if (password.length < 6) {
+  setRegisterError("password must be 6 characters or longer")
+  return;
+}
+
+if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+  setRegisterError("password must one uppercase and lowercase letter")
+  return;
+}
 
     // crate user 
     createUser(email, password, userName, photo)
@@ -324,7 +339,7 @@ const Register = () => {
               />
               {errors.email && <span className="text-red-500">This field is required</span>}
             </div>
-            <div>
+            <div className="relative">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
@@ -332,13 +347,17 @@ const Register = () => {
                 Password
               </label>
               <input
-                type="password"
-                id="password"
+                type={showEye ? "text" : "password"}
+                id = "password"
                 name="password"
                 {...register("password", { required: true })}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300 "
               />
+              <span className="absolute top-9 right-3" onClick={() => setShowEye(!showEye)}>{showEye ? <IoMdEyeOff size={20}/> : <IoMdEye size={20}/>}</span>
               {errors.password && <span className="text-red-500">This field is required</span>}
+              {
+                registerError && <p className="text-red-500">{registerError}</p>
+              }
             </div>
 
             <div>
