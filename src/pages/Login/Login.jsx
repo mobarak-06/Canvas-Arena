@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { IoMdEye ,IoMdEyeOff } from "react-icons/io";
+import { useState } from "react";
 
 const Login = () => {
+  const [showEye, setShowEye] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
@@ -24,6 +28,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
+        setLoginError(error);
       });
   };
 
@@ -68,17 +73,21 @@ const Login = () => {
           {errors.email && (
               <span className="text-red-500">This field is required</span>
             )}
-          <div className="w-full transform border-gray-400 border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mb-5">
+          <div className="w-full transform border-gray-400 border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mb-5 relative">
             <input
-              type="password"
+              type={showEye ? "text" : "password"}
               placeholder="Password"
               {...register("password", { required: true }, { pattern: /^[A-Za-z]+$/i })}
               className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
             />
+            <span className="absolute right-4" onClick={() => setShowEye(!showEye)}>{showEye ? <IoMdEyeOff size={20}/> : <IoMdEye size={20}/>}</span>
           </div>
           {errors.password && (
               <span className="text-red-500">This field is required</span>
             )}
+            {
+              loginError && <p className="text-red-500 font-bold">Some Thing Wrong !</p>
+            }
           <div className="flex items-center justify-center">
             <button className="transform rounded-md  bg-indigo-600 py-2 font-bold duration-300  text-white hover:bg-indigo-400 p-4 w-full btn">
               LOG IN

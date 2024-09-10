@@ -16,7 +16,7 @@ const ItemDetails = () => {
   } = data;
 
   return (
-    <div className="mt-16 mx-24 mb-10">
+    <div className="mt-16 md:mx-24 mb-10">
       <div>
         <img className="h-[450px] w-1/2  mx-auto" src={photo} alt="" />
         <h1 className="text-xl text-center mt-6">

@@ -1,20 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import userPic from "../../assets/da7ed7b0-5f66-4f97-a610-51100d3b9fd2.jpg"
+import userPic from "../../assets/da7ed7b0-5f66-4f97-a610-51100d3b9fd2.jpg";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { logOut, user } = useAuth();
 
   // sign out
- const handleSignOut = () => {
-  logOut()
-  .then(() => {
-    console.log("log out");
-  })
-  .catch((error) => {
-    console.error(error);
-  });
- }
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        console.log("log out");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const navLinks = (
     <>
@@ -62,7 +63,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 fixed top-0 z-10 shadow-sm px-24">
+      <div className="navbar bg-base-100 fixed top-0 z-10 shadow-md md:first-line:px-24">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -98,32 +99,42 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end tooltip tooltip-left" data-tip={user?.displayName}>
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full tooltip tooltip-left" data-tip="hello">
                   <img
-                    alt = ""
-                    src={ user?.photoURL || userPic}
+                    alt=""
+                    src={user?.photoURL || userPic} 
                   />
                 </div>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-              >               
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-80 p-2 shadow"
+              >
                 <li>
-                  <a><span className="font-bold">Name:</span><span className=" font-semibold">{user?.displayName}</span> </a>
+                  <a>
+                    <span className="font-bold">Name:</span>
+                    <span className=" font-semibold">
+                      {user?.displayName}
+                    </span>{" "}
+                  </a>
                 </li>
                 <li>
-                  <a><span className="font-bold">Email:</span><span className=" font-semibold">{user?.email}</span> </a>
+                  <a>
+                    <span className="font-bold">Email:</span>
+                    <span className=" font-semibold">{user?.email}</span>{" "}
+                  </a>
                 </li>
-                
+
                 <li className="flex justify-center items-center">
-                  <a onClick={handleSignOut} className="text-red-500">Logout</a>
+                  <a onClick={handleSignOut} className="text-red-500 font-semibold">
+                    Logout
+                  </a>
                 </li>
               </ul>
             </div>

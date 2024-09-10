@@ -39,8 +39,7 @@ const Update = () => {
 
     return (
         <div
-        className="md:w-[1200px] w-[650px]
-          h-[765px] bg-[#F4F3F0] md:mx-auto   md:px-24 md:py-12"
+        className="min-w-min min-h-min bg-[#F4F3F0] md:mx-auto px-12 md:px-24 md:py-12"
       >
         <h1 className="text-6xl font-bold md:text-center mb-10">Update Arts & Crafts </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +53,7 @@ const Update = () => {
                 placeholder="Item Name"
                 {...register("itemName")}
                 defaultValue={data.itemName}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
@@ -67,13 +66,13 @@ const Update = () => {
                 placeholder="Subcategory Name"
                 {...register("subcategoryName")}
                 defaultValue={data.subcategoryName}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
           </div>
           <div className="md:flex gap-6">
-            <div className="form-control md:w-full">
+            <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Short Description</span>
               </label>
@@ -82,7 +81,7 @@ const Update = () => {
                 placeholder="Short Description"
                 {...register("shortDescription")}
                 defaultValue={data.shortDescription}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
@@ -95,13 +94,13 @@ const Update = () => {
                 placeholder="Price"
                 {...register("price")}
                 defaultValue={data.price}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
           </div>
           <div className="md:flex gap-6">
-            <div className="form-control md:w-full">
+            <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Rating</span>
               </label>
@@ -110,7 +109,7 @@ const Update = () => {
                 placeholder="Rating"
                 {...register("rating")}
                 defaultValue={data.rating}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
@@ -123,7 +122,7 @@ const Update = () => {
                 placeholder="Processing Time"
                 {...register("processingTime")}
                 defaultValue={data.processingTime}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
@@ -163,7 +162,7 @@ const Update = () => {
             </div>
           </div>
           <div className="md:flex gap-6">
-            <div className="form-control md:w-full">
+            <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Photo Url</span>
               </label>
@@ -172,13 +171,13 @@ const Update = () => {
                 placeholder="Photo Url"
                 {...register("photo")}
                 defaultValue={data.photo}
-                className="input input-bordered w-3/4 md:w-full"
+                className="input input-bordered  w-full"
                 required
               />
             </div>
           </div>
           <input
-            className="btn mt-6 w-3/4 md:w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white"
+            className="btn mt-6 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white"
             type="submit"
             value="Update Item"
           />
