@@ -22,10 +22,10 @@ const Slider = () => {
                   "url(https://i.ibb.co.com/d64TfG7/monochromatic-still-life-composition-with-tableware.jpg)",
               }}
             >
-              <h1 className="Libre-Baskerville text-6xl font-medium text-white ml-72 mb-40">
+              <h1 className="Libre-Baskerville text-4xl md:text-6xl font-medium text-white md:ml-72 mb-20 md:mb-40">
                 ART & HANDCRAFT
               </h1>
-              <span className=" text-5xl ml-72 Tangerine">
+              <span className=" text-3xl md:text-5xl md:ml-72 Tangerine">
                 <h1
                   style={{
                     paddingTop: "5rem",
@@ -58,10 +58,10 @@ const Slider = () => {
               }}
             >
               {/* POTTERY & CLAY */}
-              <h2 className="Libre-Baskerville text-3xl font-medium text-white mb-36">
+              <h2 className="Libre-Baskerville text-2xl md:text-3xl font-medium text-white mb-20 md:mb-36">
                 WE LOVE{" "}
               </h2>
-              <span className="Libre-Baskerville text-6xl">
+              <span className="Libre-Baskerville text-4xl md:text-6xl">
                 <h1
                   style={{
                     paddingTop: "5rem",
@@ -93,10 +93,10 @@ const Slider = () => {
                   "url(https://i.ibb.co.com/dcC805q/terracotta-vase-with-indigenous-pattern-1.jpg)",
               }}
             >
-              <h2 className="Libre-Baskerville text-3xl font-medium text-sky-400 mb-20">
+              <h2 className="Libre-Baskerville text-2xl md:text-3xl  text-white mb-20 font-bold ">
                 THE ART OF CLAY
               </h2>
-              <span className=" Libre-Baskerville text-5xl">
+              <span className=" Libre-Baskerville text-center text-3xl md:text-5xl">
                 <h1
                   style={{
                     paddingTop: "5rem",
@@ -104,7 +104,7 @@ const Slider = () => {
                     fontWeight: "normal",
                   }}
                 >
-                  <span style={{ color: "#FF5733", fontWeight: "bold" }}>
+                  <span className="text-sky-500" style={{ fontWeight: "bold" }}>
                     {/* Style will be inherited from the parent element */}
                     <Typewriter
                       words={["CREATIVE POTTERY WORKSHOP"]}
