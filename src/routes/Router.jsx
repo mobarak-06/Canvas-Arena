@@ -10,6 +10,7 @@ import Register from "../pages/Register/Register";
 import ItemDetails from "../components/ItemDetails/ItemDetails";
 import Update from "../pages/MyArtCraftList/Update";
 import PrivateRouter from "./PrivateRouter";
+import NewAdd from "../components/NewAdd";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,11 @@ export const router = createBrowserRouter([
           </PrivateRouter>,
           loader: ({params}) => fetch(`http://localhost:5000/allCraftItems/${params.id}`)
         },
+        {
+          path: "/newAdd",
+          element: <NewAdd/>
+        }
+        
       ],
     },
   ]);

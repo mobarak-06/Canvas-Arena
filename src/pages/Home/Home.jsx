@@ -1,22 +1,21 @@
-import { useEffect } from "react";
 import CraftItems from "../../components/CraftItems/CraftItems";
 import Slider from "../../components/Slider/Slider";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import Services from "../Services/Services";
+import CeramicsAndPottery from "../../components/Ceramics and Pottery/CeramicsAndPottery";
 
 const Home = () => {
-  useEffect(() => {
-    AOS.init({ duration: "2000" });
-  }, []);
-
   return (
     <div>
       {/* slider */}
       <Slider />
       {/* Craft Items Section */}
-      <div data-aos="fade-up">
+      <div>
         <CraftItems />
       </div>
+      <Services />
+      {/* ceramics and pottery section */}
+      <CeramicsAndPottery />
     </div>
   );
 };
