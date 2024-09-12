@@ -18,7 +18,7 @@ const ItemDetails = () => {
   return (
     <div className="mt-16 md:mx-24 mb-10">
       <div>
-        <img className="h-[450px] w-1/2  mx-auto" src={photo} alt="" />
+        <img className="h-[450px] md:w-3/4 lg:w-1/2  mx-auto" src={photo} alt="" />
         <h1 className="text-xl text-center mt-6">
           <span className="font-bold">Item Name: </span>
           {itemName}

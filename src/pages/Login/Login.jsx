@@ -58,9 +58,9 @@ const Login = () => {
     })
   }
   return (
-    <main className="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-200 text-black">
+    <main className="mx-auto flex min-h-screen w-full items-center justify-center dark:bg-gray-900 text-black">
       <section className="flex w-[30rem] flex-col space-y-10">
-        <div className="text-center text-4xl font-medium">Log In</div>
+        <div className="text-center text-4xl font-medium text-gray-400">Log In</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full transform border-gray-400 border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 mb-5">
             <input
@@ -99,7 +99,7 @@ const Login = () => {
             FORGOT PASSWORD?
           </Link>
 
-          <p className="text-center text-lg">
+          <p className="text-center text-lg text-gray-400">
             No account?
             <Link
               to="/register"

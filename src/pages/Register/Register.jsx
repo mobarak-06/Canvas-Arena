@@ -55,7 +55,7 @@ if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
 
   return (
     <div className="flex h-screen">
-      <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
+      <div className="hidden lg:flex items-center justify-center flex-1 dark:bg-gray-900 text-black">
         <div className="max-w-md text-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +287,7 @@ if (!/^(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
         </div>
       </div>
       {/* <!-- Right Pane --> */}
-      <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
+      <div className="w-full  bg-gray-300 lg:w-1/2 flex items-center justify-center">
         <div className="max-w-md w-full p-6">
           <h1 className="text-3xl font-semibold mb-6 text-black text-center">
             Sign Up

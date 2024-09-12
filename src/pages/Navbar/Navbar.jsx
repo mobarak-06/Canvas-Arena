@@ -1,10 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import userPic from "../../assets/da7ed7b0-5f66-4f97-a610-51100d3b9fd2.jpg";
-import { Tooltip } from "react-tooltip";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { logOut, user } = useAuth();
+  const [theme, setTheme] = useState("light");
+
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("synthwave")
+    }
+    else{
+      setTheme("light")
+    }
+  }
+
+  console.log(theme);
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+    const localTheme = localStorage.getItem('theme')
+    document.querySelector('html').setAttribute('data-theme', localTheme)
+  }, [theme])
 
   // sign out
   const handleSignOut = () => {
@@ -19,7 +37,7 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li className="font-bold text-base text-[#993333]">
+      <li className="font-bold text-base text-secondary">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -29,7 +47,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="font-bold text-base text-[#993333]">
+      <li className="font-bold text-base text-secondary">
         <NavLink
           to="/allArt&Craft"
           className={({ isActive }) =>
@@ -39,7 +57,7 @@ const Navbar = () => {
           All Art & craft Items
         </NavLink>
       </li>
-      <li className="font-bold text-base text-[#993333]">
+      <li className="font-bold text-base text-secondary">
         <NavLink
           to="/addCraft"
           className={({ isActive }) =>
@@ -49,7 +67,7 @@ const Navbar = () => {
           Add Craft Item
         </NavLink>
       </li>
-      <li className="font-bold text-base text-[#993333]">
+      <li className="font-bold text-base text-secondary">
         <NavLink
           to="/myArt&Craft"
           className={({ isActive }) =>
@@ -63,7 +81,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 fixed top-0 z-10 shadow-md md:first-line:px-24">
+      <div className="navbar bg-base-100 fixed top-0 z-10 shadow-md md:px-24">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -98,18 +116,57 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
+          <label className="grid cursor-pointer place-items-center mr-2">
+            <input
+            onChange={handleToggle}
+              type="checkbox"
+              className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+            />
+            <svg
+              className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
+            <svg
+              className="stroke-base-100 fill-base-100 col-start-2 row-start-1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </label>
           {user ? (
-            <div className="dropdown dropdown-end tooltip tooltip-left" data-tip={user?.displayName}>
+            <div
+              className="dropdown dropdown-end tooltip tooltip-left"
+              data-tip={user?.displayName}
+            >
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full tooltip tooltip-left" data-tip="hello">
-                  <img
-                    alt=""
-                    src={user?.photoURL || userPic} 
-                  />
+                <div
+                  className="w-10 rounded-full tooltip tooltip-left"
+                  data-tip="hello"
+                >
+                  <img alt="" src={user?.photoURL || userPic} />
                 </div>
               </div>
               <ul
@@ -132,7 +189,10 @@ const Navbar = () => {
                 </li>
 
                 <li className="flex justify-center items-center">
-                  <a onClick={handleSignOut} className="text-red-500 font-semibold">
+                  <a
+                    onClick={handleSignOut}
+                    className="text-red-500 font-semibold"
+                  >
                     Logout
                   </a>
                 </li>

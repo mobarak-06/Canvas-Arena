@@ -39,7 +39,7 @@ const Update = () => {
 
     return (
         <div
-        className="min-w-min min-h-min bg-[#F4F3F0] md:mx-auto px-12 md:px-24 md:py-12"
+        className="min-w-min min-h-min dark:bg-gray-900 md:mx-auto px-12 md:px-24 md:py-12"
       >
         <h1 className="text-6xl font-bold md:text-center mb-10">Update Arts & Crafts </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
