@@ -22,7 +22,7 @@ const Slider = () => {
                   "url(https://i.ibb.co.com/d64TfG7/monochromatic-still-life-composition-with-tableware.jpg)",
               }}
             >
-              <h1 className="Libre-Baskerville text-4xl md:text-6xl font-medium text-white lg:ml-72 mb-20 md:mb-40">
+              <h1 className="Libre-Baskerville text-4xl md:text-6xl font-medium text-white lg:ml-72 mb-20 md:mb-40 text-center">
                 ART & HANDCRAFT
               </h1>
               <span className=" text-3xl md:text-5xl lg:ml-72 Tangerine">

@@ -15,7 +15,7 @@ const CeramicsAndPottery = () => {
   return (
     <div>
       <h1 className="text-5xl Libre-Baskerville font-bold text-center mt-20 mb-12">Ceramics and Pottery</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:mx-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-10 md:mx-24">
         {items.map((item) => (
           <div key={item._id} className=" bg-base-100 shadow-xl">
             <figure>
