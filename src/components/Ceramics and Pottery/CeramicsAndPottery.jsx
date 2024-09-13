@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const CeramicsAndPottery = () => {
   const [items, setItems] = useState([]);
@@ -33,9 +34,9 @@ const CeramicsAndPottery = () => {
                 {item.shortDescription.slice(0, 29)}...
               </p>
               <div className="card-actions justify-end">
-                <button className="btn bg-indigo-500 text-white hover:bg-indigo-600">
+                <Link to={`/ceramicsAndPottery/${item._id}`}  className="btn bg-indigo-500 text-white hover:bg-indigo-600">
                   View Details <FaArrowRight />
-                </button>
+                </Link>
               </div>
             </div>
           </div>

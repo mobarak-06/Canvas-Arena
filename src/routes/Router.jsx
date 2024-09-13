@@ -11,6 +11,7 @@ import ItemDetails from "../components/ItemDetails/ItemDetails";
 import Update from "../pages/MyArtCraftList/Update";
 import PrivateRouter from "./PrivateRouter";
 import NewAdd from "../components/NewAdd";
+import DetailsOfCeraAndPot from "../components/DetailsOfCeraAndPot/DetailsOfCeraAndPot";
 
 export const router = createBrowserRouter([
     {
@@ -64,6 +65,11 @@ export const router = createBrowserRouter([
         {
           path: "/newAdd",
           element: <NewAdd/>
+        },
+        {
+          path: "/ceramicsAndPottery/:id",
+          element:<DetailsOfCeraAndPot/>,
+          loader: ({params}) => fetch(`http://localhost:5000/ceramicsAndPottery/${params.id}`)
         }
         
       ],
