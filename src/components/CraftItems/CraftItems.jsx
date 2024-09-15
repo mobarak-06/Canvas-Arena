@@ -5,7 +5,7 @@ const CraftItems = () => {
   const [items, setItems] = useState([]);
   console.log(items);
   useEffect(() => {
-    fetch("http://localhost:5000/allCraftItems")
+    fetch("https://assignment-10-server-gamma-nine.vercel.app/allCraftItems")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

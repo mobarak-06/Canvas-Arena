@@ -20,7 +20,7 @@ const NewAdd = () => {
       photo,
     };
 
-    fetch("http://localhost:5000/ceramicsAndPottery", {
+    fetch("https://assignment-10-server-gamma-nine.vercel.app/ceramicsAndPottery", {
       method: "POST",
       headers: {
         "content-type": "application/json",

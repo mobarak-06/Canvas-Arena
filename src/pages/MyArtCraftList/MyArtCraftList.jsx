@@ -10,7 +10,7 @@ const MyArtCraftList = () => {
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myCraftItems/${user?.email}`)
+    fetch(`https://assignment-10-server-gamma-nine.vercel.app/myCraftItems/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,7 +29,7 @@ const MyArtCraftList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://assignment-10-server-gamma-nine.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

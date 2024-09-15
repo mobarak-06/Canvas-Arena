@@ -36,7 +36,7 @@ const AddCraft = () => {
     };
     console.log(newUser);
 
-    fetch("http://localhost:5000/addCraftItem", {
+    fetch("https://assignment-10-server-gamma-nine.vercel.app/addCraftItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",

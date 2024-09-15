@@ -19,7 +19,7 @@ const Update = () => {
         console.log(updatedUser);
 
         // update user
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://assignment-10-server-gamma-nine.vercel.app/update/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

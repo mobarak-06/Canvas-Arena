@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
         {
           path: "/allArt&Craft",
           element: <AllArtCraft/>,
-          loader: () => fetch('http://localhost:5000/allCraftItems')
+          loader: () => fetch('https://assignment-10-server-gamma-nine.vercel.app/allCraftItems')
         },
         {
           path: "/addCraft",
@@ -53,14 +53,14 @@ export const router = createBrowserRouter([
           element: <PrivateRouter>
             <ItemDetails/>
           </PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:5000/allCraftItems/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-10-server-gamma-nine.vercel.app/allCraftItems/${params.id}`)
         },
         {
           path: "/update/:id",
           element: <PrivateRouter>
             <Update/>
           </PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:5000/allCraftItems/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-10-server-gamma-nine.vercel.app/allCraftItems/${params.id}`)
         },
         {
           path: "/newAdd",
@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
         {
           path: "/ceramicsAndPottery/:id",
           element:<DetailsOfCeraAndPot/>,
-          loader: ({params}) => fetch(`http://localhost:5000/ceramicsAndPottery/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-10-server-gamma-nine.vercel.app/ceramicsAndPottery/${params.id}`)
         }
         
       ],

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CeramicsAndPottery = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/ceramicsAndPottery")
+    fetch("https://assignment-10-server-gamma-nine.vercel.app/ceramicsAndPottery")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
