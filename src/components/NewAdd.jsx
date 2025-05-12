@@ -2,7 +2,6 @@ const NewAdd = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-
     const itemName = form.itemName.value;
     const subcategoryName = form.subcategoryName.value;
     const shortDescription = form.shortDescription.value;

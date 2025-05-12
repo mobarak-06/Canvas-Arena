@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddCraft = () => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const {
@@ -48,6 +50,7 @@ const AddCraft = () => {
         console.log(data);
         if (data.insertedId) {
           toast.success("Item Added SuccessFully !");
+          navigate('/myArt&Craft');
         }
       });
   };

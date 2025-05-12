@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyArtCraftList = () => {
-  const { user } = useAuth();
+  const { user} = useAuth();
   console.log(user);
   const [loadedUser, setLoadedUser] = useState([]);
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`https://assignment-10-server-gamma-nine.vercel.app/myCraftItems/${user?.email}`)
+    fetch(
+      `https://assignment-10-server-gamma-nine.vercel.app/myCraftItems/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,9 +31,12 @@ const MyArtCraftList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assignment-10-server-gamma-nine.vercel.app/delete/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-10-server-gamma-nine.vercel.app/delete/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -47,6 +52,7 @@ const MyArtCraftList = () => {
       }
     });
   };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:mx-24 mt-10 md:mt-20">
       {loadedUser.map((item) => (

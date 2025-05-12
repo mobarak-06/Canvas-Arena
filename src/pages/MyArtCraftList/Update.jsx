@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 const Update = () => {
     const {id} = useParams();
     const data = useLoaderData();
-    console.log(data);
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -31,6 +31,7 @@ const Update = () => {
             console.log(data);
             if (data.modifiedCount > 0) {
                 toast.success("User Updated Successfully !")
+                navigate('/myArt&Craft')
             }
         })
 
